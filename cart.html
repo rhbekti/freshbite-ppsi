@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - Table</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <section id="order-details">
+        <table class="order-table">
+            <tr>
+                <th colspan="2">Customer Details</th>
+            </tr>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td><span id="name"></span></td>
+            </tr>
+            <tr>
+                <td><strong>Phone:</strong></td>
+                <td><span id="phone"></span></td>
+            </tr>
+            <tr>
+                <td><strong>Address:</strong></td>
+                <td><span id="address"></span></td>
+            </tr>
+            <tr>
+                <td><strong>Product:</strong></td>
+                <td><span id="food-items"></span></td>
+            </tr>
+            <tr>
+                <th colspan="2">Total Price</th>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>$ <span id="total-price"></span></strong></td>
+            </tr>
+        </table>
+        <div class="payment-options">
+            <p class="pay-using-text">Pay Using:</p>
+            <div class="payment-icons-container">
+                <div class="payment-icon-box">
+                    <a href="https://shopeepay.co.id">
+                        <img src="images/sppay.png" alt="ShopeePay Icon" class="payment-icon">
+                    </a>
+                </div>
+                <div class="payment-icon-box">
+                    <a href="https://www.gopay.co.id">
+                        <img src="images/gopay.png" alt="Gopay Icon" class="payment-icon">
+                    </a>
+                </div>
+                <div class="payment-icon-box">
+                    <a href="https://www.dana.id">
+                        <img src="images/dana.png" alt="Dana Icon" class="payment-icon">
+                    </a>
+                </div>
+            </div>
+        </div>    
+        <a class="back-button" href="index.html">Back</a>        
+    </section>
+</body>
+</html>
