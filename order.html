@@ -288,6 +288,15 @@
 
           let formData = $(this).serialize();
 
+          Swal.fire({
+            title: "Processing...",
+            text: "Please wait while we process your order.",
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
           $.ajax({
             url: "https://script.google.com/macros/s/AKfycbz0FzQRQPYJMEqhfy2P1W5RogsBzxcVEebwfE00cbhAtMgmJERUCJzlZndoGfWIL02y/exec",
             type: "POST",
@@ -309,7 +318,17 @@
               }
             },
             error: function (jqXHR, textStatus, errorThrown) {
+              Swal.fire({
+                title: "Error",
+                text: "There was an error submitting your order. Please try again.",
+                icon: "error",
+                confirmButtonText: "Retry",
+              });
               console.error("Error submitting form:", textStatus, errorThrown);
+            },
+            complete: function () {
+              // Hide the loading indicator
+              Swal.hideLoading();
             },
           });
         });
