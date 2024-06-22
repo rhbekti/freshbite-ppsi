@@ -31,6 +31,8 @@ window.addEventListener("scroll", function () {
 
 // get product
 $(document).ready(function () {
+  let countOrder = 0;
+
   getProducts();
 
   function getProducts() {
@@ -69,6 +71,7 @@ $(document).ready(function () {
 
   $(document).ajaxStop(function () {
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    getCountOrder();
 
     orders.forEach((order) => {
       let productCard = $(`.product-card[data-name="${order.productName}"]`);
@@ -86,6 +89,8 @@ $(document).ready(function () {
       let productImage = productCard.data("image");
       let quantity = parseInt(productCard.data("quantity")) || 0;
       quantity++;
+      countOrder += 1;
+      $("#count-cart").text(countOrder);
 
       productCard.data("quantity", quantity);
       productCard.attr("data-quantity", quantity);
@@ -103,6 +108,8 @@ $(document).ready(function () {
 
       if (quantity > 0) {
         quantity--;
+        countOrder -= 1;
+        $("#count-cart").text(countOrder);
       }
 
       productCard.data("quantity", quantity);
@@ -111,6 +118,14 @@ $(document).ready(function () {
 
       updateQuantity(productName, productPrice, productImage, quantity);
     });
+
+    function getCountOrder() {
+      orders.forEach((p) => {
+        countOrder += p.quantity;
+      });
+
+      $("#count-cart").text(countOrder);
+    }
 
     function updateQuantity(productName, productPrice, productImage, quantity) {
       let productIndex = orders.findIndex((p) => p.productName === productName);
